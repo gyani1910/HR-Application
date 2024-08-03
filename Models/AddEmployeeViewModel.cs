@@ -1,13 +1,10 @@
-
-
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using NewApp1.Models.Entities;
 
-namespace NewApp1.Models.Entities
+namespace NewApp1.Models
 {
-    public class Employee
+    public class AddEmployeeViewModel
     {
         [Key]
         public int EmployeeID { get; set; }
@@ -21,10 +18,15 @@ namespace NewApp1.Models.Entities
         public string LastName { get; set; }
 
         [Required]
-        [ForeignKey("DepartmentID")]
         public int DepartmentID { get; set; }
-        public Department Department { get; set; }
 
-        public ICollection<Salary> Salaries { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal SalaryValue { get; set; }
+
+        // [ForeignKey("DepartmentID")]
+        // public Department Department { get; set; }
+
+        // public ICollection<Salary> SalaryValue { get; set; }
     }
 }

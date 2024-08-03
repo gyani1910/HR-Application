@@ -1,0 +1,49 @@
+@{}
+
+@model NewApp1.Models.Entities.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h2>Add New Employee</h2>
+
+<form method = "post" asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="EmployeeID" class="control-label"></label>
+        <input asp-for="EmployeeID" class="form-control" readonly/>
+        <span asp-validation-for="EmployeeID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepartmentID" class="control-label"></label>
+        <input asp-for="DepartmentID" class="form-control" />
+        <span asp-validation-for="DepartmentID" class="text-danger"></span>
+    </div>
+    @* <div class="form-group">
+        <label asp-for="Department.Name" class="control-label"></label>
+        <input asp-for="Department.Name" class="form-control" />
+        <span asp-validation-for="Department.Name" class="text-danger"></span>
+    </div> *@
+    @* <div class="form-group">
+        <label asp-for="Salaries" class="control-label"></label>
+        <input asp-for="Salaries" class="form-control" />
+        <span asp-validation-for="Salaries" class="text-danger"></span>
+    </div> *@
+    <div class="form-group">
+        <input type="submit" value="Edit" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -24,6 +24,7 @@ namespace  NewApp1.Models{
             .WithMany(d => d.Employees)
             .HasForeignKey(e => e.DepartmentID);
 
+        
         modelBuilder.Entity<Salary>()
             .HasOne(s => s.Employee)
             .WithMany(e => e.Salaries)

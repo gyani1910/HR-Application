@@ -1,0 +1,44 @@
+@{}
+
+@model NewApp1.Models.AddEmployeeViewModel
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<h2>Add New Employee</h2>
+
+<form method = "post" asp-action="AddData">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepartmentID" class="control-label"></label>
+        <input asp-for="DepartmentID" class="form-control" />
+        <span asp-validation-for="DepartmentID" class="text-danger"></span>
+    </div>
+    @* <div class="form-group">
+        <label asp-for="Department.Name" class="control-label"></label>
+        <input asp-for="Department.Name" class="form-control" />
+        <span asp-validation-for="Department.Name" class="text-danger"></span>
+    </div> *@
+    <div class="form-group">
+        <label asp-for="SalaryValue" class="control-label"></label>
+        <input asp-for="SalaryValue" class="form-control" />
+        <span asp-validation-for="SalaryValue" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="AddData" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

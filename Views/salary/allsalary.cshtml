@@ -1,0 +1,46 @@
+@{}
+
+@model List<NewApp1.Models.Entities.Salary>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Departments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All Salary</h1>
+        <a href="@Url.Action("getsalarydata", "Salary")" class="btn btn-success">Create New Salary</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Salary ID</th>
+                    <th>Employee ID</th>
+                    <th>Salary</th>
+
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var salaryvar in Model)
+                {
+                    <tr>
+                        <td>@salaryvar.SalaryID</td>
+                        <td>@salaryvar.EmployeeID</td>
+                        <td>@salaryvar.SalaryValue </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Salary", new { id = salaryvar.SalaryID })" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="@Url.Action("Delete", "Salary", new { id = salaryvar.SalaryID })" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
