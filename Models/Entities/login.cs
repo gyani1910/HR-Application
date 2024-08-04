@@ -9,7 +9,7 @@ namespace NewApp1.Models.Entities
     public class Login
     {
         [Required]
-        public string ID { get; set; }
+        public string username { get; set; }
 
         [Required]
         public string Password { get; set; }

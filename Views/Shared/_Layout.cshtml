@@ -50,7 +50,8 @@
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </li>
-            <li class="nav-item">
+             @if (ViewBag.session != null && ViewBag.session)
+            {<li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Employee" asp-action="allemployee">Employee</a>
             </li>
             <li class="nav-item">
@@ -59,6 +60,13 @@
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Salary" asp-action="allsalary">Salary</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="Logout" asp-controller="Login" asp-action="Logout">Logout</a>
+            </li>}
+            @if (ViewBag.session == null || !ViewBag.session)
+            {<li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Initial">Login</a>
+            </li>}
         </ul>
     </div>
     <div class="content">

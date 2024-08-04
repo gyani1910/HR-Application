@@ -1,3 +1,11 @@
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.csproj.AssemblyReference.cache
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.AssemblyInfoInputs.cache
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.AssemblyInfo.cs
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.csproj.CoreCompileInputs.cache
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.MvcApplicationPartsAssemblyInfo.cache
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.RazorAssemblyInfo.cache
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.RazorAssemblyInfo.cs
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/appsettings.Development.json
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/appsettings.json
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/NewApp1.staticwebassets.runtime.json
@@ -111,14 +119,6 @@
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.csproj.AssemblyReference.cache
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.GeneratedMSBuildEditorConfig.editorconfig
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.AssemblyInfoInputs.cache
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.AssemblyInfo.cs
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.csproj.CoreCompileInputs.cache
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.MvcApplicationPartsAssemblyInfo.cache
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.RazorAssemblyInfo.cache
-/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.RazorAssemblyInfo.cs
 /Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/staticwebassets.build.json
 /Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/staticwebassets.development.json
 /Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/staticwebassets/msbuild.NewApp1.Microsoft.AspNetCore.StaticWebAssets.props

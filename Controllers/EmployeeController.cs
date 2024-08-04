@@ -61,6 +61,15 @@ namespace NewApp1.Controllers{
 
         [HttpGet]
         public async Task<IActionResult> allemployee(){
+            if (TempData["Session"] != null)
+            {
+                ViewBag.Session = TempData["Session"];
+            }
+            else
+            {
+                ViewBag.Session = false;
+                return RedirectToAction("Initial", "Login");
+            }
             var employees = await dbContext.Employees.ToListAsync();
             return View(employees);
         }

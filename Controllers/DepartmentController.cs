@@ -53,11 +53,59 @@ namespace NewApp1.Controllers{
         }
         
         public async Task<IActionResult> Delete(int id){
-            // var department = await dbContext.Departments.FindAsync(id);
-            // dbContext.Departments.Remove(department);
-            // await dbContext.SaveChangesAsync();
+            // // var department = await dbContext.Departments.FindAsync(id);
+            // // dbContext.Departments.Remove(department);
+            // // await dbContext.SaveChangesAsync();
+            // return RedirectToAction("alldepartment", "Department");
+
+            
+   // Fetch the department to be deleted
+            var department = await dbContext.Departments.FindAsync(id);
+
+            if (department == null)
+            {
+                return NotFound();
+            }
+
+            // Find employees associated with this department
+            var employees = await dbContext.Employees
+                .Where(e => e.DepartmentID == id)
+                .ToListAsync();
+
+            // Fetch all salaries associated with employees
+            var employeeIds = employees.Select(e => e.EmployeeID).ToList();
+            var salaries = await dbContext.Salaries
+                .Where(s => employeeIds.Contains(s.EmployeeID))
+                .ToListAsync();
+
+            // Remove each salary one by one
+            foreach (var salary in salaries)
+            {
+                dbContext.Salaries.Remove(salary);
+            }
+
+            // Save changes to the database
+            await dbContext.SaveChangesAsync();
+
+
+            // Set DepartmentID to null for these employees
+            foreach (var employee in employees)
+            {
+                employee.DepartmentID = null; 
+                dbContext.Employees.Update(employee);
+                            // Save changes to the database
+                await dbContext.SaveChangesAsync();
+            }
+
+
+            // Remove the department
+            dbContext.Departments.Remove(department);
+
+            // Save changes to the database
+            await dbContext.SaveChangesAsync();
+
             return RedirectToAction("alldepartment", "Department");
-        }
+}
 
     }
 }

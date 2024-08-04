@@ -33,7 +33,7 @@ namespace  NewApp1.Models{
             .HasForeignKey(s => s.EmployeeID);
             
         modelBuilder.Entity<Login>()
-            .HasKey(l => l.ID);
+            .HasKey(l => l.username);
 
     }
 

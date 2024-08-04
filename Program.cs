@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using NewApp1.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,15 @@ builder.Services.AddEndpointsApiExplorer();
 //This section below is for connection string 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
+// builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//     .AddCookie(options =>
+//     {
+//         options.LoginPath = "/Login/Initial"; // Redirect to the Login page if not authenticated
+//         options.AccessDeniedPath = "/Home/AccessDenied"; // Redirect if access is denied
+//     });
+
+// builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -26,6 +36,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();

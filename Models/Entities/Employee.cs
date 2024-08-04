@@ -22,7 +22,7 @@ namespace NewApp1.Models.Entities
 
         [Required]
         [ForeignKey("DepartmentID")]
-        public int DepartmentID { get; set; }
+        public int? DepartmentID { get; set; }
         public Department Department { get; set; }
 
 

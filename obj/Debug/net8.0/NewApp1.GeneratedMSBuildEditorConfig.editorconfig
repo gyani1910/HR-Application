@@ -50,6 +50,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/gyan/Desktop/NewApp1/Views/Login/Initial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vSW5pdGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/gyan/Desktop/NewApp1/Views/Login/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/gyan/Desktop/NewApp1/Views/salary/allsalary.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Mvc2FsYXJ5L2FsbHNhbGFyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
