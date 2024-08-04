@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewApp1.Models;
 using NewApp1.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace NewApp1.Controllers{
 
+    [Authorize]
     public class SalaryController : Controller{
         private readonly  ApplicationDbContext dbContext;
         public SalaryController(ApplicationDbContext dbContext)

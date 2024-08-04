@@ -135,3 +135,8 @@
 /Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.pdb
 /Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.genruntimeconfig.cache
 /Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/ref/NewApp1.dll
+/Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.AspNetCore.Authorization.dll
+/Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.AspNetCore.Metadata.dll
+/Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.Extensions.Options.dll

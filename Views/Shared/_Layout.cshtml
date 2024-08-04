@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -93,3 +93,112 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+
+@* second code final one  *@
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NewApp1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NewApp1.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #f8f9fa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+        .sidebar .nav-item {
+            margin-bottom: 10px;
+        }
+        .sidebar .nav-link {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .sidebar .nav-link:hover {
+            color: #007bff;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+        .footer {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Employee" asp-action="allemployee">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Department" asp-action="alldepartment">Department</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Salary" asp-action="allsalary">Salary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Login" asp-action="Logout">Logout</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Login" asp-action="Initial">Login</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="content">
+        <header>
+            <nav class="navbar navbar-light bg-light border-bottom box-shadow mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">NewApp1</a>
+                </div>
+            </nav>
+        </header>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - NewApp1 - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

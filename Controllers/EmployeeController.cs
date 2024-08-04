@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering; 
 using NewApp1.Models;
 using NewApp1.Models.Entities;
-
+using Microsoft.AspNetCore.Authorization;
 
 using System;
 using System.Threading.Tasks;
@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace NewApp1.Controllers{
 
+    [Authorize]
     public class EmployeeController : Controller{
         private readonly  ApplicationDbContext dbContext;
         public EmployeeController(ApplicationDbContext dbContext)
@@ -61,15 +62,6 @@ namespace NewApp1.Controllers{
 
         [HttpGet]
         public async Task<IActionResult> allemployee(){
-            if (TempData["Session"] != null)
-            {
-                ViewBag.Session = TempData["Session"];
-            }
-            else
-            {
-                ViewBag.Session = false;
-                return RedirectToAction("Initial", "Login");
-            }
             var employees = await dbContext.Employees.ToListAsync();
             return View(employees);
         }
