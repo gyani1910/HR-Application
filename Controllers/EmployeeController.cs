@@ -37,7 +37,9 @@ namespace NewApp1.Controllers{
                     // EmployeeID = model.EmployeeID,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    DepartmentID = model.DepartmentID
+                    DepartmentID = model.DepartmentID,
+                    Email = model.Email,
+                    Address = model.Address
                 };
                 await dbContext.Employees.AddAsync(employee);
                 await dbContext.SaveChangesAsync();

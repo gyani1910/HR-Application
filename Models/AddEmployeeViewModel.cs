@@ -17,8 +17,17 @@ namespace NewApp1.Models
         [MaxLength(50)]
         public string LastName { get; set; }
 
+
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
         [Required]
         public int DepartmentID { get; set; }
+        
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
