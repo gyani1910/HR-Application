@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc; 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering; 
 using NewApp1.Models;
 using NewApp1.Models.Entities;
 
@@ -19,12 +20,18 @@ namespace NewApp1.Controllers{
         }
 
         [HttpGet]
-        public IActionResult AddData(){
-            Console.WriteLine("AddData");
+        public async Task<IActionResult> AddData(){
+            // Console.WriteLine("AddData");
+            // return View();
+            // Fetch departments for dropdown
+            var departments =  await dbContext.Departments.ToListAsync();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
+
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddData(AddEmployeeViewModel model){
+        public async Task<IActionResult> AddData(AddEmployeeViewModel model)
+        {
             Console.WriteLine(model.FirstName);
                 var employee = new Employee{
                     // EmployeeID = model.EmployeeID,
@@ -43,6 +50,8 @@ namespace NewApp1.Controllers{
                 await dbContext.SaveChangesAsync();
                 
             return RedirectToAction("allemployee", "Employee");
+
+           
 
         
 
@@ -63,15 +72,58 @@ namespace NewApp1.Controllers{
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id){
-            var employee = await dbContext.Employees.FindAsync(id);
+            // var employee = await dbContext.Employees.FindAsync(id);
+            // return View(employee);
+
+            var employee = dbContext.Employees.Find(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            // Fetch departments and create a SelectList
+            var departments = await dbContext.Departments.ToListAsync();
+            ViewBag.Departments = new SelectList(dbContext.Departments, "DepartmentID", "DepartmentName");
+
             return View(employee);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Employee employee){
-            dbContext.Employees.Update(employee);
-            await dbContext.SaveChangesAsync();
-            return RedirectToAction("allemployee", "Employee");
+        public async Task<IActionResult> Edit(Employee employee)
+        {
+            // dbContext.Employees.Update(employee);
+            // await dbContext.SaveChangesAsync();
+            // return RedirectToAction("allemployee", "Employee");
+
+            if (ModelState.IsValid)
+        {
+            try
+            {
+                dbContext.Employees.Update(employee);
+                await dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (employee == null || employee.EmployeeID == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("alldepartment", "Department"); // or another appropriate action
+        }
+
+        // Re-fetch departments if validation fails
+        var departments = await dbContext.Departments.ToListAsync();
+        ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
+
+        return View(employee);
+
+        
+
         }
     }
 }

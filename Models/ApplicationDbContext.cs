@@ -14,6 +14,8 @@ namespace  NewApp1.Models{
     public DbSet<Salary> Salaries { get; set; }
     public DbSet<Department> Departments { get; set; }
 
+    public DbSet<Login> Logins { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -29,7 +31,13 @@ namespace  NewApp1.Models{
             .HasOne(s => s.Employee)
             .WithMany(e => e.Salaries)
             .HasForeignKey(s => s.EmployeeID);
+            
+        modelBuilder.Entity<Login>()
+            .HasKey(l => l.ID);
+
     }
+
+
 }
 }
 
