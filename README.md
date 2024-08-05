@@ -22,7 +22,10 @@
   - **jQuery**: 3.5.1
 
 ## Properties Implemented
-### Features
+### Features of HR Application
+- **Login Management and Registration Management**:
+  - **User Registration**: Register new users.
+  - **User Login**: Authenticate users and provide access to the application.
 - **Salary Management**:
   - **Addition**: Add new salary records for employees.
   - **Modification**: Update existing salary records.
@@ -85,13 +88,10 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.7
 
 dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.7
 ```
-
-
 **Build the project**:
 ```sh
 dotnet build
 ```
-
 **Run the project**:
 ```
 dotnet run
@@ -106,8 +106,47 @@ dotnet run
 ### Configuration
 Database Connection: Update the connection string in appsettings.json to point to your SQL Server instance.
 Azure Deployment: Follow Azure's documentation to deploy the Docker container to Azure App Service.
-Usage
-Employee Registration: Register new employees and manage their details.
-Salary Management: Add, modify, and delete salary records for employees.
-Authorization: 
+
+If you are setting the Applications for the first time use the following commands
+
+```sh
+SET IDENTITY_INSERT Departments ON;
+INSERT INTO Departments (DepartmentID, DepartmentName)
+VALUES (1, 'DepartmentNamePlaceholder');
+SET IDENTITY_INSERT Departments OFF;
+
+
+SET IDENTITY_INSERT Employee ON;
+INSERT INTO Employee (EmployeeID, FirstName, LastName, DepartmentID, Address, EMail)
+VALUES (1, 'FirstNamePlaceholder', 'LastNamePlaceholder', 1, 'AddressPlaceholder', 'email@example.com');
+SET IDENTITY_INSERT Employee OFF;
+
+SET IDENTITY_INSERT Logins ON;
+INSERT INTO Logins (Username, Password)
+VALUES ('UsernamePlaceholder', 'PasswordPlaceholder');
+SET IDENTITY_INSERT Logins OFF;
+
+
+SET IDENTITY_INSERT Salaries ON;
+INSERT INTO Salaries (SalaryID, EmployeeID, SalaryValue)
+VALUES (1, 1, 'SalaryValue');
+SET IDENTITY_INSERT Salaries OFF;
+
+
+SELECT * FROM Employee;
+SELECT * FROM Salaries;
+SELECT * FROM Departments;
+SELECT * FROM Logins;
+```
+
+Create SQL migrations from models:
+```sh
+dotnet ef migrations add "Initial Migration"
+```
+
+Apply migrations to database tables:
+```sh
+dotnet ef database update "Initial Migration"
+```
+
 Contributions are welcome! Please fork the repository and submit a pull request.
