@@ -101,7 +101,7 @@ dotnet run
   git clone https://github.com/your-repo/hr-application.git
   cd hr-application
   ```
-3. **Access the application**: Open your browser and navigate to http://localhost:8080.
+3. **Access the application**: Open the application on the web browser.
 
 ### Configuration
 Database Connection: Update the connection string in appsettings.json to point to your SQL Server instance.
