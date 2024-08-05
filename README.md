@@ -4,7 +4,7 @@
 **HR Application**
 
 ## Tech Stack
-- **Backend**: ASP.NET Core
+- **Backend**: ASP.NET Core , MVC architecture
 - **Frontend**: Razor Pages, Bootstrap, jQuery
 - **Database**: SQL Server
 - **Containerization**: Docker
@@ -149,4 +149,13 @@ Apply migrations to database tables:
 dotnet ef database update "Initial Migration"
 ```
 
+After these you are all set to go.
+
+I have also posted the video for reference on how the application would like!
+```sh
+  <link>
+```
+
 Contributions are welcome! Please fork the repository and submit a pull request.
+
+
