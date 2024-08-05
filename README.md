@@ -52,12 +52,56 @@ This project was developed using Azure Studio within a Docker container, providi
    ```sh
    git clone https://github.com/your-repo/hr-application.git
    cd hr-application
-Build and run the Docker container:
-```sh
-git clone https://github.com/your-repo/hr-application.git
-cd hr-application
+**Commands to Install Dependencies**:
 
-Access the application: Open your browser and navigate to http://localhost:8080.
+**Microsoft.AspNetCore.Authentication.Cookies**:
+```sh
+dotnet add package Microsoft.AspNetCore.Authentication.Cookies --version 2.2.0
+```
+
+**Microsoft.AspNetCore.Authorization**:
+```sh
+dotnet add package Microsoft.AspNetCore.Authorization --version 8.0.7
+```
+
+**Microsoft.EntityFrameworkCore**:
+```sh
+
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.7
+```
+
+**Microsoft.EntityFrameworkCore.Design**:
+```sh
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.7
+```
+**Microsoft.EntityFrameworkCore.SqlServer**:
+```sh
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.7
+```
+
+**Microsoft.EntityFrameworkCore.Tools**:
+```sh
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.7
+```
+
+
+**Build the project**:
+```sh
+dotnet build
+```
+
+**Run the project**:
+```
+dotnet run
+```
+**Build and run the Docker container**:
+  ```sh
+  git clone https://github.com/your-repo/hr-application.git
+  cd hr-application
+  ```
+3. **Access the application**: Open your browser and navigate to http://localhost:8080.
 
 ### Configuration
 Database Connection: Update the connection string in appsettings.json to point to your SQL Server instance.
@@ -65,6 +109,5 @@ Azure Deployment: Follow Azure's documentation to deploy the Docker container to
 Usage
 Employee Registration: Register new employees and manage their details.
 Salary Management: Add, modify, and delete salary records for employees.
-Authorization: Secure access to the application using JWT authentication.
-Contributing
+Authorization: 
 Contributions are welcome! Please fork the repository and submit a pull request.
