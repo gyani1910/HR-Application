@@ -42,9 +42,6 @@
 ### Use Case
 The HR Application can be used by an organization to store and manage employee records on a device. It includes features for employee registration and salary management. Additionally, it has implemented authorization features to ensure secure access to the application.
 
-### Development Environment
-This project was developed using Azure Studio within a Docker container, providing a consistent and isolated development environment.
-
 ## Getting Started
 ### Prerequisites
 - Docker installed on your machine
