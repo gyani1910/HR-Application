@@ -54,19 +54,11 @@ namespace NewApp1.Controllers{
                 
             return RedirectToAction("allemployee", "Employee");
 
-           
-
-        
-
         }
 
         [HttpGet]
         public async Task<IActionResult> allemployee()
         {
-            if (TempData["M"] == "1")
-            {
-                ViewBag.Message = "Successfully Logged In";
-            }
             var departments = await dbContext.Departments.ToListAsync();
             ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
             var employees = await dbContext.Employees.ToListAsync();
@@ -86,11 +78,6 @@ namespace NewApp1.Controllers{
             // return View(employee);
 
             var employee = dbContext.Employees.Find(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
             // Fetch departments and create a SelectList
             var departments = await dbContext.Departments.ToListAsync();
             ViewBag.Departments = new SelectList(dbContext.Departments, "DepartmentID", "DepartmentName");
@@ -104,37 +91,8 @@ namespace NewApp1.Controllers{
             dbContext.Employees.Update(employee);
             await dbContext.SaveChangesAsync();
             return RedirectToAction("allemployee", "Employee");
-
-        //     try
-        //     {
-        //         dbContext.Employees.Update(employee);
-        //         await dbContext.SaveChangesAsync();
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         if (employee == null || employee.EmployeeID == null)
-        //         {
-        //             return NotFound();
-        //         }
-        //         else
-        //         {
-        //             throw;
-        //         }
-        //     }
-        //     return RedirectToAction("alldepartment", "Department"); // or another appropriate action
-
-
-        // // Re-fetch departments if validation fails
-        // var departments = await dbContext.Departments.ToListAsync();
-        // ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
-
-        // return View(employee);
-
-        
-
         }
     }
 }
 
 
-// Add message
