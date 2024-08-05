@@ -27,6 +27,14 @@
   - **Addition**: Add new salary records for employees.
   - **Modification**: Update existing salary records.
   - **Deletion**: Remove salary records.
+- **Employee Management**:
+  - **Addition**: Add new Employee records.
+  - **Modification**: Update existing employee records.
+  - **Deletion**: Remove employee records.
+- **Department Management**:
+  - **Addition**: Add new Department records.
+  - **Modification**: Update existing Deparment records.
+  - **Deletion**: Remove Department records.
 
 ### Use Case
 The HR Application can be used by an organization to store and manage employee records on a device. It includes features for employee registration and salary management. Additionally, it has implemented authorization features to ensure secure access to the application.
@@ -48,7 +56,7 @@ Build and run the Docker container:
 
 Access the application: Open your browser and navigate to http://localhost:8080.
 
-Configuration
+### Configuration
 Database Connection: Update the connection string in appsettings.json to point to your SQL Server instance.
 Azure Deployment: Follow Azure's documentation to deploy the Docker container to Azure App Service.
 Usage
