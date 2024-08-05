@@ -1,5 +1,3 @@
-@{}
-
 @model List<NewApp1.Models.Entities.Salary>
 
 <!DOCTYPE html>
@@ -7,40 +5,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Departments</title>
+    <title>All Salary</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-custom {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #474787; /* Deep Purple-Gray */
+            color: white;
+            margin-bottom: 20px;
+            max-width: 300px; /* Adjust width as needed */
+        }
+
+        .card-custom .card-body {
+            background-color: #474787; /* Deep Purple-Gray */
+            color: white;
+        }
+
+        .btn-custom {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>All Salary</h1>
-        <a href="@Url.Action("getsalarydata", "Salary")" class="btn btn-success">Create New Salary</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Salary ID</th>
-                    <th>Employee ID</th>
-                    <th>Salary</th>
-
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var salaryvar in Model)
-                {
-                    <tr>
-                        <td>@salaryvar.SalaryID</td>
-                        <td>@salaryvar.EmployeeID</td>
-                        <td>@salaryvar.SalaryValue </td>
-                        <td>
-                            <a href="@Url.Action("Edit", "Salary", new { id = salaryvar.SalaryID })" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="@Url.Action("Delete", "Salary", new { id = salaryvar.SalaryID })" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="container mt-4">
+        <h1 class="text-center">All Salary</h1>
+        <div class="row">
+            @foreach (var salary in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <h5 class="card-title">Salary ID: @salary.SalaryID</h5>
+                            <p class="card-text"><strong>Employee ID:</strong> @salary.EmployeeID</p>
+                            <p class="card-text"><strong>Salary:</strong> @salary.SalaryValue</p>
+                            <a href="@Url.Action("Edit", "Salary", new { id = salary.SalaryID })" class="btn btn-primary btn-sm btn-custom">Edit</a>
+                            <a href="@Url.Action("Delete", "Salary", new { id = salary.SalaryID })" class="btn btn-danger btn-sm btn-custom">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

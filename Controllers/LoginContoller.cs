@@ -110,12 +110,17 @@ namespace NewApp1.Controllers
         [HttpGet]
         public IActionResult Initial()
         {
+            if (TempData["Message"] != null)
+            {
+                ViewBag.error = TempData["Message"];
+            }
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Initial(loginViewModel model)
         {
+
             var user = await dbContext.Logins
                 .FirstOrDefaultAsync(u => u.username == model.Username && u.Password == model.Password);
 
@@ -136,11 +141,13 @@ namespace NewApp1.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authProperties);
 
-                return RedirectToAction("Index", "Home"); // Redirect to Home page or any other page
+                TempData["M"] = "1";
+                return RedirectToAction("allemployee", "Employee"); // Redirect to Home page or any other page
             }
             else
             {
-                ModelState.AddModelError("", "Invalid username or password");
+                // ModelState.AddModelError("", "Invalid username or password");
+                ViewBag.error = "Invalid username or password";
                 return View(model);
             }
         }
@@ -154,6 +161,12 @@ namespace NewApp1.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Login login)
         {
+            var userExists = await dbContext.Logins.AnyAsync(u => u.username == login.username);
+            if (userExists)
+            {
+                TempData["Message"] = "User already exists";
+                return RedirectToAction("Initial");
+            }
             dbContext.Logins.Add(login);
             await dbContext.SaveChangesAsync();
             return RedirectToAction("Initial");

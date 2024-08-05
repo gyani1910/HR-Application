@@ -1,4 +1,3 @@
-@{}
 
 @model List<NewApp1.Models.Entities.Department>
 
@@ -9,35 +8,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Departments</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-custom {
+            background-color: #474787; /* Deep Purple-Gray for cards */
+            color: #ECECEC; /* Light Gray text color */
+            border: 1px solid #2C2C54; /* Dark Indigo border color */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+            min-width: 300px; /* Increased minimum width */
+        }
+        .card-custom:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>All Departments</h1>
-        <a href="@Url.Action("getdepartmentdata", "Department")" class="btn btn-success">Create New Department</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Department ID</th>
-                    <th>Department Name</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var Departmentvar in Model)
-                {
-                    <tr>
-                        <td>@Departmentvar.DepartmentID</td>
-                        <td>@Departmentvar.DepartmentName </td>
-                        <td>
-                            <a href="@Url.Action("Edit", "Department", new { id = Departmentvar.DepartmentID })" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="@Url.Action("Delete", "Department", new { id = Departmentvar.DepartmentID })" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">All Departments</h1>
+        <a href="@Url.Action("getdepartmentdata", "Department")" class="btn btn-success mb-4 d-block mx-auto">Create New Department</a>
+        <!-- Department Cards -->
+        <div class="d-flex flex-wrap justify-content-center">
+            @foreach (var department in Model)
+            {
+                <div id="department-@department.DepartmentID" class="card card-custom mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Department @department.DepartmentID</h5>
+                        <p class="card-text"><strong>Department Name:</strong> @department.DepartmentName</p>
+                        <a href="@Url.Action("Edit", "Department", new { id = department.DepartmentID })" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Department", new { id = department.DepartmentID })" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

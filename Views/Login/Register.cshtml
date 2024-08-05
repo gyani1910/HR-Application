@@ -4,7 +4,15 @@
     ViewData["Title"] = "Register";
 }
     
-
+@if(ViewBag.error != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> @ViewBag.error
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 <h2>@ViewData["Title"]</h2>
 
 <form asp-action="Register" method="post">

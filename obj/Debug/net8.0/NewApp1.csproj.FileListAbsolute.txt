@@ -140,3 +140,4 @@
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/gyan/Desktop/NewApp1/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/gyan/Desktop/NewApp1/obj/Debug/net8.0/NewApp1.sourcelink.json

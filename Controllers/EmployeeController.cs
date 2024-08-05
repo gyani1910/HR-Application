@@ -61,7 +61,14 @@ namespace NewApp1.Controllers{
         }
 
         [HttpGet]
-        public async Task<IActionResult> allemployee(){
+        public async Task<IActionResult> allemployee()
+        {
+            if (TempData["M"] == "1")
+            {
+                ViewBag.Message = "Successfully Logged In";
+            }
+            var departments = await dbContext.Departments.ToListAsync();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
             var employees = await dbContext.Employees.ToListAsync();
             return View(employees);
         }
@@ -94,39 +101,40 @@ namespace NewApp1.Controllers{
         [HttpPost]
         public async Task<IActionResult> Edit(Employee employee)
         {
-            // dbContext.Employees.Update(employee);
-            // await dbContext.SaveChangesAsync();
-            // return RedirectToAction("allemployee", "Employee");
+            dbContext.Employees.Update(employee);
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction("allemployee", "Employee");
 
-            if (ModelState.IsValid)
-        {
-            try
-            {
-                dbContext.Employees.Update(employee);
-                await dbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (employee == null || employee.EmployeeID == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction("alldepartment", "Department"); // or another appropriate action
-        }
+        //     try
+        //     {
+        //         dbContext.Employees.Update(employee);
+        //         await dbContext.SaveChangesAsync();
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (employee == null || employee.EmployeeID == null)
+        //         {
+        //             return NotFound();
+        //         }
+        //         else
+        //         {
+        //             throw;
+        //         }
+        //     }
+        //     return RedirectToAction("alldepartment", "Department"); // or another appropriate action
 
-        // Re-fetch departments if validation fails
-        var departments = await dbContext.Departments.ToListAsync();
-        ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
 
-        return View(employee);
+        // // Re-fetch departments if validation fails
+        // var departments = await dbContext.Departments.ToListAsync();
+        // ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
+
+        // return View(employee);
 
         
 
         }
     }
 }
+
+
+// Add message

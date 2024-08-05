@@ -1,34 +1,51 @@
-@{}
-
 @model NewApp1.Models.Entities.Salary
 
 @{
     ViewData["Title"] = "Edit Salary";
 }
 
-<h2>Add New Salary</h2>
-
-<form method = "post" asp-action="Edit">
-    <div class="form-group">
-        <label asp-for="SalaryID" class="control-label"></label>
-        <input asp-for="SalaryID" class="form-control" readonly/>
-        <span asp-validation-for="SalaryID" class="text-danger"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #474787; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="form-container">
+            <h2>Edit Salary</h2>
+            <form method="post" asp-action="Edit">
+                <div class="form-group">
+                    <label asp-for="SalaryID" class="control-label">Salary ID</label>
+                    <input asp-for="SalaryID" class="form-control" readonly />
+                    <span asp-validation-for="SalaryID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmployeeID" class="control-label">Employee ID</label>
+                    <input asp-for="EmployeeID" class="form-control" readonly />
+                    <span asp-validation-for="EmployeeID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SalaryValue" class="control-label">Salary Value</label>
+                    <input asp-for="SalaryValue" class="form-control" />
+                    <span asp-validation-for="SalaryValue" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
     </div>
-        <div class="form-group">
-        <label asp-for="EmployeeID" class="control-label"></label>
-        <input asp-for="EmployeeID" class="form-control" readonly/>
-        <span asp-validation-for="EmployeeID" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="SalaryValue" class="control-label"></label>
-        <input asp-for="SalaryValue" class="form-control" />
-        <span asp-validation-for="SalaryValue" class="text-danger"></span>
-    </div>
-
-        <input type="submit" value="Edit" class="btn btn-primary" />
-    </div>
-</form>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+</body>
+</html>

@@ -1,6 +1,5 @@
-@{}
-
 @model List<NewApp1.Models.Entities.Employee>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,43 +8,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Employees</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #E2E2E2;
+            color: #2C2C54;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .btn-success {
+            margin-bottom: 20px;
+        }
+        .employee-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between cards */
+        }
+        .employee-card {
+            background-color: #474787;
+            color: #ECECEC;
+            border-radius: 8px;
+            width: 100%; /* Full width of its container */
+            max-width: 400px; /* Maximum width */
+            height: 400px; /* Fixed height */
+            padding: 20px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            perspective: 1000px; /* Adjust perspective for better 3D effect */
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .card-back {
+            background-color: #474787;
+            transform: rotateY(180deg);
+        }
+        .flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .employee-id-list {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #2C2C54;
+            border-radius: 8px;
+            color: #ECECEC;
+        }
+        .employee-id-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .employee-id-list li {
+            margin: 5px 0;
+        }
+        .employee-id-list a {
+            color: #AAABB8;
+            text-decoration: none;
+        }
+        .employee-id-list a:hover {
+            text-decoration: underline;
+        }
+        .form-container {
+            display: none;
+            background-color: #474787;
+            padding: 20px;
+            border-radius: 8px;
+            color: #ECECEC;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10; /* Ensure it is on top */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+        }
+        .highlight {
+            border: 2px solid #00bfff; /* Highlight color for selected card */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>All Employees</h1>
         <a href="@Url.Action("AddData", "Employee")" class="btn btn-success">Create New Employee</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Employee ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email ID</th>
-                    <th>Address</th>
-                    <th>Department ID</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
+
+        @* <!-- Employee ID List -->
+        <div class="employee-id-list">
+            <h4>Employee IDs</h4>
+            <ul>
                 @foreach (var employee in Model)
                 {
-                    <tr>
-                        <td>@employee.EmployeeID</td>
-                        <td>@employee.FirstName</td>
-                        <td>@employee.LastName</td>
-                        <td>@employee.Email</td>
-                        <td>@employee.Address</td>
-                        <td>@employee.DepartmentID</td>
-                        <td>
-                            <a href="@Url.Action("Edit", "Employee", new { id = employee.EmployeeID })" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="@Url.Action("Delete", "Employee", new { id = employee.EmployeeID })" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
+                    <li><a href="#" class="employee-id-link" data-employee-id="@employee.EmployeeID">Employee @employee.EmployeeID</a></li>
                 }
-            </tbody>
-        </table>
+            </ul>
+        </div> *@
+
+        <!-- Employee Cards -->
+        <div class="employee-list" id="employeeList">
+            @foreach (var employee in Model)
+            {
+                <div id="employee-@employee.EmployeeID" class="employee-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h5>Employee @employee.EmployeeID</h5>
+                            <p><strong>First Name:</strong> @employee.FirstName</p>
+                            <p><strong>Last Name:</strong> @employee.LastName</p>
+                            <p><strong>Email ID:</strong> @employee.Email</p>
+                            <p><strong>Address:</strong> @employee.Address</p>
+                            <p><strong>Department ID:</strong> @employee.DepartmentID </p>
+                            <div class="actions">
+                                <button class="btn btn-primary btn-sm edit-button" data-employee-id="@employee.EmployeeID">Edit</button>
+                                <a href="@Url.Action("Delete", "Employee", new { id = employee.EmployeeID })" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="form-container" id="form-@employee.EmployeeID">
+                                @Html.Partial("Edit", Model.FirstOrDefault(e => e.EmployeeID == employee.EmployeeID))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.employee-id-link').click(function(event) {
+                event.preventDefault();
+                var employeeId = $(this).data('employee-id');
+                var $targetCard = $('#employee-' + employeeId);
+                var $employeeList = $('#employeeList');
+
+                if ($targetCard.length) {
+                    var cardOffset = $targetCard.position().left;
+                    var containerWidth = $employeeList.width();
+                    var cardWidth = $targetCard.outerWidth(true);
+                    var scrollLeft = cardOffset - (containerWidth / 2) + (cardWidth / 2);
+
+                    $employeeList.animate({
+                        scrollLeft: scrollLeft
+                    }, 500);
+
+                    $('.employee-card').removeClass('highlight');
+                    $targetCard.addClass('highlight');
+                }
+            });
+
+            $('.edit-button').click(function() {
+                var employeeId = $(this).data('employee-id');
+                var $card = $('#employee-' + employeeId);
+                var $formContainer = $('#form-' + employeeId);
+                
+                $card.toggleClass('flipped');
+                
+                if ($card.hasClass('flipped')) {
+                    $formContainer.show();
+                } else {
+                    $formContainer.hide();
+                }
+            });
+        });
+    </script>
 </body>
-</html>
