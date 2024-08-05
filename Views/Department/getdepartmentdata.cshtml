@@ -1,4 +1,4 @@
-@model NewApp1.Models.AddDepartmentViewModel
+@* @* @model NewApp1.Models.AddDepartmentViewModel
 
 @{
     ViewData["Title"] = "Create Department";
@@ -52,6 +52,106 @@
         <div class="form-card">
             <h2>Create New Department</h2>
             <form method="post" asp-action="CreateDepartment">
+                <div class="form-group">
+                    <label asp-for="DepartmentName" class="control-label"></label>
+                    <input asp-for="DepartmentName" class="form-control" />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+</body>
+</html> 
+@* @{}
+
+@model NewApp1.Models.AddDepartmentViewModel
+
+@{
+    ViewData["Title"] = "Create Department";
+}
+
+<h2>Add New Department</h2>
+
+<form method = "post" asp-action="getdepartmentdata">
+    <div class="form-group">
+        <label asp-for="DepartmentName" class="control-label"></label>
+        <input asp-for="DepartmentName" class="form-control" />
+        <span asp-validation-for="DepartmentName" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 
+
+
+*@
+
+@model NewApp1.Models.AddDepartmentViewModel
+
+@{
+    ViewData["Title"] = "Create Department";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            background-color: #474787; /* Deep Purple-Gray */
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #28A745; /* Green */
+            border-color: #28A745;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838; /* Darker Green */
+            border-color: #1e7e34;
+        }
+
+        .form-control, .form-control:focus {
+            background-color: #e9ecef; /* Light Gray for inputs */
+            border-color: #474787; /* Deep Purple-Gray border */
+            color: #333; /* Dark text color for readability */
+        }
+
+        .form-control::placeholder {
+            color: #6c757d; /* Light gray placeholder text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="form-card">
+            <h2>Create New Department</h2>
+            <form method="post" asp-action="getdepartmentdata">
                 <div class="form-group">
                     <label asp-for="DepartmentName" class="control-label"></label>
                     <input asp-for="DepartmentName" class="form-control" />
