@@ -45,6 +45,8 @@ The HR Application can be used by an organization to store and manage employee r
 ### Development Environment
 This project was developed using Azure Studio within a Docker container, providing a consistent and isolated development environment.
 
+### Project Demo
+https://drive.google.com/file/d/13xV6CuGvRMPX9qV_k0wZxVdzd2SpkhBT/view?usp=sharing
 ## Getting Started
 ### Prerequisites
 - Docker installed on your machine
