@@ -104,14 +104,16 @@ dotnet run
 Database Connection: Update the connection string in appsettings.json to point to your SQL Server instance.
 Azure Deployment: Follow Azure's documentation to deploy the Docker container to Azure App Service.
 
-If you are setting the Applications for the first time use the following commands
+
+If you are setting the Application for the first time you have to Register and then login with  your username and password.
+To have intial set up of your Database use the following command to enter some values into your database.
 
 ```sh
 
 INSERT INTO Departments (DepartmentID, DepartmentName)
 VALUES (1, 'DepartmentNamePlaceholder');
 SELECT * FROM Employee;
-Like wise follow for other enitites inyour data base
+follow the same sql qurey with salary and Department to set up your initial database 
 
 ```
 
