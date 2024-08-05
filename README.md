@@ -110,33 +110,12 @@ Azure Deployment: Follow Azure's documentation to deploy the Docker container to
 If you are setting the Applications for the first time use the following commands
 
 ```sh
-SET IDENTITY_INSERT Departments ON;
+
 INSERT INTO Departments (DepartmentID, DepartmentName)
 VALUES (1, 'DepartmentNamePlaceholder');
-SET IDENTITY_INSERT Departments OFF;
-
-
-SET IDENTITY_INSERT Employee ON;
-INSERT INTO Employee (EmployeeID, FirstName, LastName, DepartmentID, Address, EMail)
-VALUES (1, 'FirstNamePlaceholder', 'LastNamePlaceholder', 1, 'AddressPlaceholder', 'email@example.com');
-SET IDENTITY_INSERT Employee OFF;
-
-SET IDENTITY_INSERT Logins ON;
-INSERT INTO Logins (Username, Password)
-VALUES ('UsernamePlaceholder', 'PasswordPlaceholder');
-SET IDENTITY_INSERT Logins OFF;
-
-
-SET IDENTITY_INSERT Salaries ON;
-INSERT INTO Salaries (SalaryID, EmployeeID, SalaryValue)
-VALUES (1, 1, 'SalaryValue');
-SET IDENTITY_INSERT Salaries OFF;
-
-
 SELECT * FROM Employee;
-SELECT * FROM Salaries;
-SELECT * FROM Departments;
-SELECT * FROM Logins;
+Like wise follow for other enitites inyour data base
+
 ```
 
 Create SQL migrations from models:
