@@ -132,7 +132,7 @@ After these you are all set to go.
 
 I have also posted the video for reference on how the application would like!
 ```sh
-  <https://drive.google.com/file/d/13xV6CuGvRMPX9qV_k0wZxVdzd2SpkhBT/view?usp=sharing>
+  https://drive.google.com/file/d/13xV6CuGvRMPX9qV_k0wZxVdzd2SpkhBT/view?usp=sharing
 ```
 
 Contributions are welcome! Please fork the repository and submit a pull request.
