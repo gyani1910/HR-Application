@@ -53,6 +53,9 @@ This project was developed using Azure Studio within a Docker container, providi
    git clone https://github.com/your-repo/hr-application.git
    cd hr-application
 Build and run the Docker container:
+```sh
+git clone https://github.com/your-repo/hr-application.git
+cd hr-application
 
 Access the application: Open your browser and navigate to http://localhost:8080.
 
