@@ -131,7 +131,9 @@ dotnet ef database update "Initial Migration"
 After these you are all set to go.
 
 I have also posted the video for reference on how the application would like!
+Also refer for MVC Diagram 
 
+https://drive.google.com/file/d/12IUpSX5yFTREF1qpJV1EzOZnwQcynqZU/view?usp=drive_link
 https://drive.google.com/file/d/13xV6CuGvRMPX9qV_k0wZxVdzd2SpkhBT/view?usp=sharing
 
 
