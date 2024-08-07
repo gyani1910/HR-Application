@@ -42,9 +42,6 @@
 ### Use Case
 The HR Application can be used by an organization to store and manage employee records on a device. It includes features for employee registration and salary management. Additionally, it has implemented authorization features to ensure secure access to the application.
 
-### Development Environment
-This project was developed using Azure Studio within a Docker container, providing a consistent and isolated development environment.
-
 ## Getting Started
 ### Prerequisites
 - Docker installed on your machine
@@ -101,20 +98,22 @@ dotnet run
   git clone https://github.com/your-repo/hr-application.git
   cd hr-application
   ```
-3. **Access the application**: Open your browser and navigate to http://localhost:8080.
+3. **Access the application**: Open the application on the web browser.
 
 ### Configuration
 Database Connection: Update the connection string in appsettings.json to point to your SQL Server instance.
 Azure Deployment: Follow Azure's documentation to deploy the Docker container to Azure App Service.
 
-If you are setting the Applications for the first time use the following commands
+
+If you are setting the Application for the first time you have to Register and then login with  your username and password.
+To have intial set up of your Database use the following command to enter some values into your database.
 
 ```sh
 
 INSERT INTO Departments (DepartmentID, DepartmentName)
 VALUES (1, 'DepartmentNamePlaceholder');
 SELECT * FROM Employee;
-Like wise follow for other enitites inyour data base
+follow the same sql qurey with salary and Department to set up your initial database 
 
 ```
 
@@ -131,9 +130,11 @@ dotnet ef database update "Initial Migration"
 After these you are all set to go.
 
 I have also posted the video for reference on how the application would like!
-```sh
-  <link>
-```
+Also refer for MVC Diagram 
+
+https://drive.google.com/file/d/12IUpSX5yFTREF1qpJV1EzOZnwQcynqZU/view?usp=drive_link
+https://drive.google.com/file/d/13xV6CuGvRMPX9qV_k0wZxVdzd2SpkhBT/view?usp=sharing
+
 
 Contributions are welcome! Please fork the repository and submit a pull request.
 
