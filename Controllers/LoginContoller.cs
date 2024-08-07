@@ -110,10 +110,10 @@ namespace NewApp1.Controllers
         [HttpGet]
         public IActionResult Initial()
         {
-            if (TempData["Message"] != null)
-            {
-                ViewBag.error = TempData["Message"];
-            }
+            // if (TempData["Message"] != null)
+            // {
+            //     ViewBag.error = TempData["Message"];
+            // }
             return View();
         }
 
