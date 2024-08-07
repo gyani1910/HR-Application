@@ -35,7 +35,7 @@ namespace NewApp1.Controllers{
 
         [HttpGet]
         public async Task<IActionResult> alldepartment(){
-            var departments = await dbContext.Departments.ToListAsync();
+            List<Department> departments = await dbContext.Departments.ToListAsync();
             return View(departments);
         }
 

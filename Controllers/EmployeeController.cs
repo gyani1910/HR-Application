@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering; 
 using NewApp1.Models;
 using NewApp1.Models.Entities;
+using System.Linq;
+using System.Collections.Generic;
+using System.Linq.Dynamic.Core;
 using Microsoft.AspNetCore.Authorization;
 
 using System;
@@ -62,11 +65,14 @@ namespace NewApp1.Controllers{
             var departments = await dbContext.Departments.ToListAsync();
             ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
             var employees = await dbContext.Employees.ToListAsync();
+
+
+            // var employees = await dbContext.Employees.ToListAsync();
             return View(employees);
         }
         
         public async Task<IActionResult> Delete(int id){
-            var employee = await dbContext.Employees.FindAsync(id);
+            Employee employee = await dbContext.Employees.FindAsync(id);
             dbContext.Employees.Remove(employee);
             await dbContext.SaveChangesAsync();
             return RedirectToAction("allemployee", "Employee");
@@ -92,6 +98,38 @@ namespace NewApp1.Controllers{
             await dbContext.SaveChangesAsync();
             return RedirectToAction("allemployee", "Employee");
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Search(string searchTerm, int? departmentID)
+        {
+            // Start with all employees as IQueryable
+            IQueryable<Employee> query = dbContext.Employees;
+
+            // Apply filtering based on search term
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(e => e.FirstName.Contains(searchTerm) ||
+                                        e.LastName.Contains(searchTerm) ||
+                                        e.Email.Contains(searchTerm) || // Include more fields if necessary
+                                        e.Address.Contains(searchTerm));
+            }
+
+            // Apply filtering based on department ID
+            if (departmentID.HasValue)
+            {
+                query = query.Where(e => e.DepartmentID == departmentID);
+            }
+
+            // Execute the query and get the results as a list
+            var employees = await query.ToListAsync();
+
+            // Return the view with the filtered list of employees
+            var departments = await dbContext.Departments.ToListAsync();
+            ViewBag.Departments = new SelectList(departments, "DepartmentID", "DepartmentName");
+            return View(employees);
+        }
+
     }
 }
 

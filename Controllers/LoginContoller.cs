@@ -141,8 +141,8 @@ namespace NewApp1.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authProperties);
 
-                TempData["M"] = "1";
-                return RedirectToAction("allemployee", "Employee"); // Redirect to Home page or any other page
+                // TempData["M"] = "1";
+                return RedirectToAction("alldepartment", "Department"); // Redirect to Home page or any other page
             }
             else
             {

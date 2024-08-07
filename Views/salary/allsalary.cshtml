@@ -1,4 +1,4 @@
-@model List<NewApp1.Models.Entities.Salary>
+@* @model List<NewApp1.Models.Entities.Salary>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,4 +49,83 @@
     </div>
 </body>
 </html>
+ *@
 
+@model List<NewApp1.Models.Entities.Salary>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Salaries</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-custom {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #474787; /* Deep Purple-Gray */
+            color: white;
+            margin-bottom: 20px;
+            max-width: 300px; /* Adjust width as needed */
+        }
+
+        .card-custom .card-body {
+            background-color: #474787; /* Deep Purple-Gray */
+            color: white;
+        }
+
+        .btn-custom {
+            margin-right: 5px;
+        }
+
+        .scroll-container {
+            max-height: 500px; /* Adjust height as needed */
+            overflow-y: auto;
+        }
+
+        .list-group-item {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">All Salaries</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="scroll-container">
+                    <ul class="list-group">
+                        @foreach (var salary in Model)
+                        {
+                            <li class="list-group-item">
+                                <a href="#salary-@salary.SalaryID">Salary ID: @salary.SalaryID</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    @foreach (var salary in Model)
+                    {
+                        <div class="col-md-12 mb-4" id="salary-@salary.SalaryID">
+                            <div class="card card-custom">
+                                <div class="card-body">
+                                    <h5 class="card-title">Salary ID: @salary.SalaryID</h5>
+                                    <p class="card-text"><strong>Employee ID:</strong> @salary.EmployeeID</p>
+                                    <p class="card-text"><strong>Salary:</strong> @salary.SalaryValue</p>
+                                    <a href="@Url.Action("Edit", "Salary", new { id = salary.SalaryID })" class="btn btn-primary btn-sm btn-custom">Edit</a>
+                                    <a href="@Url.Action("Delete", "Salary", new { id = salary.SalaryID })" class="btn btn-danger btn-sm btn-custom">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+ 
